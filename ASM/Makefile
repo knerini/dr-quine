@@ -8,6 +8,10 @@ GRACE_SRC	= Grace.s
 GRACE_OBJ 	= $(GRACE_SRC:.s=.o)
 KID			= Grace_kid.s
 
+SULLY		= Sully
+SULLY_SRC	= Sully.s
+SULLY_OBJ	= $(SULLY_SRC:.s=.o)
+
 CC 			= gcc
 CFLAGS 		= -Wall -Werror -Wextra
 
@@ -29,24 +33,38 @@ grace: $(GRACE_OBJ)
 	@echo "Quine Grace compiled - ASM"
 	@./$(GRACE)
 
+sully: $(SULLY_OBJ)
+	@$(CC) $(CFLAGS) -o $(SULLY) $(SULLY_OBJ)
+	@echo "Quine Sully compiled - ASM"
+	@./$(SULLY)
+
 diff_c:
-	diff $(COLLEEN_SRC) $(TMP_C)
+	diff $(COLLEEN_SRC) $(TMP_C) || true
 
 diff_g:
-	diff $(GRACE_SRC) $(KID)
+	diff $(GRACE_SRC) $(KID) || true
+
+diff_s1:
+	diff $(SULLY_SRC) Sully_$(X).s || true
+
+diff_s2:
+	diff Sully_$(X1).s Sully_$(X2).s || true
 
 clean:
 	@$(RM) $(COLLEEN_OBJ)
 	@$(RM) $(GRACE_OBJ) 
+	@$(RM) $(SULLY_OBJ)
 	@echo "Objects removed."
 
 fclean: clean
 	@$(RM) $(COLLEEN)
 	@$(RM) $(GRACE)
+	@$(RM) $(SULLY)
 	@$(RM) tmp_*
 	@$(RM) $(KID)
+	@$(RM) $(SULLY)_*
 	@echo "Files cleaned."
 
 re: fclean colleen grace
 
-.PHONY: colleen grace diff_c diff_g clean fclean re
+.PHONY: colleen grace sully diff_c diff_g diff_s1 diff_s2 clean fclean re
