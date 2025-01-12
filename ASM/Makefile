@@ -23,6 +23,18 @@ RM 			= rm -f
 %.o: %.s
 	@$(NASM) $(SFLAGS) $< -o $@
 
+all: colleen grace sully
+
+help:
+	@echo "make collen : compile Colleen quine, execute the program and put the output in a tmp file."
+	@echo "make diff_c : diff between Colleen.s and the tmp file. There must be no difference."
+	@echo "make grace : compile Grace quine and execute the program."
+	@echo "make diff_g : diff between Grace.s and Grace_kid.s (created by the program). There must be no difference."
+	@echo "make sully : compile Sully quine and execute the program."
+	@echo "make diff_s1 X=<num> : diff Sully.s with one of the created Sully_X.s file. Num range is 0 -4. There must be an only difference with the variable num."
+	@echo "make diff_s2 X1=<num> X2=<num> : diff Sully_X1.s with another of the created Sully_X2.s file. Num range is 0 -4. There must be an only difference with the variable num."
+	@echo "make all : execute make colleen, make grace and make sully"
+
 colleen: $(COLLEEN_OBJ)
 	@$(CC) $(CFLAGS) -o $(COLLEEN) $(COLLEEN_OBJ)
 	@echo "Quine Colleen compiled - ASM"
@@ -67,4 +79,4 @@ fclean: clean
 
 re: fclean colleen grace
 
-.PHONY: colleen grace sully diff_c diff_g diff_s1 diff_s2 clean fclean re
+.PHONY: all help colleen grace sully diff_c diff_g diff_s1 diff_s2 clean fclean re

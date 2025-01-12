@@ -22,6 +22,16 @@ RM 			= rm -f
 
 all : colleen grace sully
 
+help:
+	@echo "make collen : compile Colleen quine, execute the program and put the output in a tmp file."
+	@echo "make diff_c : diff between Colleen.c and the tmp file. There must be no difference."
+	@echo "make grace : compile Grace quine and execute the program."
+	@echo "make diff_g : diff between Grace.c and Grace_kid.c (created by the program). There must be no difference."
+	@echo "make sully : compile Sully quine and execute the program."
+	@echo "make diff_s1 X=<num> : diff Sully.c with one of the created Sully_X.c file. Num range is 0 -4. There must be an only difference with the variable num."
+	@echo "make diff_s2 X1=<num> X2=<num> : diff Sully_X1.c with another of the created Sully_X2.c file. Num range is 0 -4. There must be an only difference with the variable num."
+	@echo "make all : execute make colleen, make grace and make sully"
+
 colleen: $(COLLEEN)
 	@echo "Quine Colleen compiled - C"
 	@./$(COLLEEN) > $(TMP_C)
@@ -72,4 +82,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all colleen grace sully diff_c diff_g diff_s1 diff_s2 clean fclean re
+.PHONY: all help colleen grace sully diff_c diff_g diff_s1 diff_s2 clean fclean re
