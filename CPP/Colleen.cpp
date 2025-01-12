@@ -1,5 +1,4 @@
 #include <iostream>
-#include <format>
 /*
 Is Rick Deckard a replicant ?
 */
@@ -9,7 +8,6 @@ int main(){
 Rachael is a Nexus-6 replicant.
 */
 std::string s = R"(#include <iostream>
-#include <format>
 /*
 Is Rick Deckard a replicant ?
 */
