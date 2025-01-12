@@ -54,10 +54,10 @@ diff_g:
 	diff $(GRACE_SRC) $(KID) || true
 
 diff_s1:
-	diff $(SULLY_SRC) Sully_$(X).s || true
+	diff $(SULLY_SRC) Sully_$(X).cpp || true
 
 diff_s2:
-	diff Sully_$(X1).s Sully_$(X2).s || true
+	diff Sully_$(X1).cpp Sully_$(X2).cpp || true
 
 clean:
 	@$(RM) $(COLLEEN_OBJ)
