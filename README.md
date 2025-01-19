@@ -33,21 +33,20 @@ Usage of `printf` specifying the argument number with `$` to reuse the same argu
 ### Grace
 Usage of `dprintf` same way as `printf` for *Colleen* but to write in a specified `fd`.
 ### Sully
-Usage of `dprintf` as *Grace* and `sprintf` to write in a specified `char *`, same way as `printf` for *Colleen*.
-
-Usage of `system` to execute commands to compile and execute another file inside the code. Easier than using `execve` avoiding the need to use `fork` and the need to handle environment or absolute path, making the code shorter and lighter for a quine.
+Usage of `dprintf` as *Grace* and `sprintf` to write in a specified `char *`, same way as `printf` for *Colleen*. Usage of `system` to execute commands to compile and execute another file inside the code. Easier than using `execve` avoiding the need to use `fork` and the need to handle environment or absolute path, making the code shorter and lighter for a quine.
 ## Assembly
 ### Colleen
 To not do a call to the extern C function `printf`, that make the challenge too easy and not fully Assembly, I've chose to create my own parsing to handle escaping characters. The data string `s` is written with special characters that will be replaced by the escaped character when printed. The string is made as follows :
-- `*` for `/n`
-- `#` for `"`
-- `^` for the string itself
+- `*` for `/n`.
+- `#` for `"`.
+- `^` for the string itself.
 ### Grace
 The data string is handled the same way as *Colleen*. The real challeng is the no declared main that cause trouble at compilation. To compile and execute a program without a declared main, the compilation rule in the Makefile is different : usage of the flags `-nostartfiles` and `-e start`.
 - `-nostartfiles` : tells the compiler/linker not to include the standard startup files (`crt0.o` or `crt1.o`) in the final executable. These files initialize the runtime environment and call the main function. Omitting these startup files prevents unnecessary overhead and avoids requiring a main function.
 - `-e start`: specifies the entry point of the program—the address where execution begins when the program is loaded. In my program I've called it `start`.
 ### Sully
 The data string is handled the same way as *Colleen* but there is more characters to escape with :
-- `&`for `'`
-- `@` for the number to decrement and to write in the new file
-The commands are executed using syscall to `fork`, `execve` and `waitid`
+- `&`for `'`.
+- `@` for the number to decrement and to write in the new file.
+
+The commands are executed using syscall to `fork`, `execve` and `waitid`.
