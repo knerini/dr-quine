@@ -29,9 +29,9 @@ Programs running under Linux.
 # QUINES
 ## Language : C
 ### Colleen
-Usage of `printf` specifying the argument number with `$` to reuse the same argument many times, making the code shorter and the `printf` function less heavier.
+Usage of `printf` specifying the argument number with `$` to reuse the same argument many times, making the code shorter and the `printf` function lighter.
 ### Grace
-Usage of `dprintf` same way as `printf` for *Colleen* but to write in as specified `fd`.
+Usage of `dprintf` same way as `printf` for *Colleen* but to write in a specified `fd`.
 ### Sully
 Usage of `dprintf` as *Grace* and `sprintf` to write in a specified `char *`, same way as `printf` for *Colleen*.
-Usage of `system` to execute commands to compile and execute another file inside the code. Easier than using `execve` avoiding the need to use `fork` and the need to give an environment, making the code shorter and ligher for a quine.
+Usage of `system` to execute commands to compile and execute another file inside the code. Easier than using `execve` avoiding the need to use `fork` and the need to handle environment or absolute path, making the code shorter and lighter for a quine.
