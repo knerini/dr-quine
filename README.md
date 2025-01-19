@@ -7,7 +7,7 @@ It's a "self-replicating program". The purpose of the project is to write 3 quin
 - Grace : no main function declared, only 3 defines, one comment. The program has to write its source code in a file called `Grace_kid.<extension>`.
 - Sully : an integer starting at 5. The program has to write its source code in a file called `Sully_X.<extension>` where X is the value of the integer of the source code, compile the file and execute it. The integer has to be decremented once at each program created while X is greater or equals to 0. 
 
-Each program has to be wrote in 2 imposed languages : C and Assembly and 1 in a choosen language and not mandatory (bonus part), C++ is my choice. To validate the program, the `diff` command must show no difference between the source code and the output or the new file created, except for Sully where the only difference is the value of the integer.
+Each program has to be wrote in 2 imposed languages : C and Assembly and 1 in a choosen language and not mandatory (bonus part), C++ is my choice. To validate the program, the `diff` command must show no difference between the source code and the output or the new file created, except for *Sully* where the only difference is the value of the integer.
 
 ## Make
 Programs running under Linux.
@@ -22,3 +22,16 @@ Programs running under Linux.
 - `make help` : explains each rule.
 
 ## Ressources Used
+- [Quine (computing)](https://en.wikipedia.org/wiki/Quine_(computing)) Wikipedia
+- [Fixed point (mathematics)](https://en.wikipedia.org/wiki/Fixed_point_(mathematics)) Wikipedia
+- [Quines (self-replicating programs)](http://www.madore.org/~david/computers/quine.html#sec_fp) David Madore
+
+# QUINES
+## Language : C
+### Colleen
+Usage of `printf` specifying the argument number with `$` to reuse the same argument many times, making the code shorter and the `printf` function less heavier.
+### Grace
+Usage of `dprintf` same way as `printf` for *Colleen* but to write in as specified `fd`.
+### Sully
+Usage of `dprintf` as *Grace* and `sprintf` to write in a specified `char *`, same way as `printf` for *Colleen*.
+Usage of `system` to execute commands to compile and execute another file inside the code. Easier than using `execve` avoiding the need to use `fork` and the need to give an environment, making the code shorter and ligher for a quine.
