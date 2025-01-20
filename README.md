@@ -34,7 +34,7 @@ Usage of `printf` specifying the argument number with `$` to reuse the same argu
 Usage of `dprintf` same way as `printf` for *Colleen* but to write in a specified `fd`.
 ### Sully
 Usage of `dprintf` as *Grace* and `sprintf` to write in a specified `char *`, same way as `printf` for *Colleen*. Usage of `system` to execute commands to compile and execute another file inside the code. Easier than using `execve` avoiding the need to use `fork` and the need to handle environment or absolute path, making the code shorter and lighter for a quine.
-## Assembly
+## Language : Assembly
 ### Colleen
 To not do a call to the extern C function `printf`, that make the challenge too easy and not fully Assembly, I've chose to create my own parsing to handle escaping characters. The data string `s` is written with special characters that will be replaced by the escaped character when printed. The string is made as follows :
 - `*` for `/n`.
@@ -50,3 +50,10 @@ The data string is handled the same way as *Colleen* but there is more character
 - `@` for the number to decrement and to write in the new file.
 
 The commands are executed using syscall to `fork`, `execve` and `waitid`.
+## Language : C++
+### Colleen
+Usage of raw string litteral `R` to print a string without the need to handle escaped charaters. A placeholder `{}` is used too to only handle parenthesis and put the data string.
+### Grace
+Usage of raw string litteral `R` like *Colleen* and the filestream functionality of the language.
+### Sully
+Same behavior as *Grace* to handle string and filestream. Call of the `system` function to handle the commands. It's important to replace the placeholder of the string before the placeholder of the integer.
