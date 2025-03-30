@@ -66,6 +66,7 @@ clean:
 	@$(RM) $(COLLEEN_OBJ)
 	@$(RM) $(GRACE_OBJ) 
 	@$(RM) $(SULLY_OBJ)
+	@$(RM) Objsully_*
 	@echo "Objects removed."
 
 fclean: clean
