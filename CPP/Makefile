@@ -13,7 +13,7 @@ SULLY_SRC	= Sully.cpp
 SULLY_OBJ	= $(SULLY_SRC:.cpp=.o)
 
 CC 			= clang++
-FLAGS 		= -Wall -Werror -Wextra -std=c++23
+FLAGS 		= -Wall -Werror -Wextra -std=c++20
 
 RM 			= rm -f
 
